@@ -39,4 +39,36 @@ const userRegister = async (req, res) => {
   }
 };
 
-export { userRegister };
+const userLogin = async (req,res)=>{
+    try {
+        const {email,password} =req.body;
+
+        if(!email || !password){
+            return res.json({success:false,message:"All fields are required"});
+        }
+
+        const user = await UserModel.findOne({email});
+
+        if(!user){
+            return res.json({success:false,message:"User not found"});
+        }
+
+        // compare password
+        const isMatch = await bcrypt.compare(password,user.password);
+
+        if(!isMatch){
+            return res.json({success:false,message:"Invalid credentials"});
+        }
+
+        // generate token
+        const token =jwt.sign({id:user._id},process.env.JWT_SECRET);
+
+        res.json({success:true,token});
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:error.message})
+        
+    }
+}
+
+export { userRegister, userLogin };
