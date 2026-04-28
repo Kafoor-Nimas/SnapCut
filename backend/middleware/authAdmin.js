@@ -15,7 +15,7 @@ const adminAuth = async (req, res, next) => {
     if (user.role !== "admin") {
       return res.json({ success: false, message: "Unauthorized user" });
     }
-    req.body.userId = decoded.id;
+    req.headers.userId = decoded.id;
 
     next();
   } catch (error) {
