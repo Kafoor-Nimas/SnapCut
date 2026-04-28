@@ -3,6 +3,8 @@ import cors from "cors";
 import "dotenv/config";
 import connectDB from "./config/db.js";
 import userRouter from "./routes/userRoute.js";
+import connectCloudinary from "./config/cloudinary.js";
+import barberRouter from "./routes/barberRoute.js";
 
 const app = express();
 
@@ -11,11 +13,12 @@ app.use(express.json());
 
 // Connect to MongoDB
 connectDB();
-
+// connect cloudinary
+connectCloudinary();
 
 // routes
 app.use("/api/user", userRouter);
-
+app.use("/api/barber", barberRouter);
 
 const PORT = process.env.PORT || 4000;
 
