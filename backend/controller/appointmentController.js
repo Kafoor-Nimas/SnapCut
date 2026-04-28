@@ -48,4 +48,19 @@ const listUserAppointment = async (req, res) => {
   }
 };
 
-export { bookAppointment, listUserAppointment };
+const cancelAppointment = async (req, res) => {
+  try {
+    const { appointmentId } = req.body;
+
+    await AppointmentModel.findByIdAndUpdate(appointmentId, {
+      status: "Cancelled",
+    });
+
+    res.json({ success: true, message: "Appointment cancelled successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { bookAppointment, listUserAppointment, cancelAppointment };
