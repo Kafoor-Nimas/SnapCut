@@ -74,9 +74,26 @@ const listAllAppointment = async (req, res) => {
   }
 };
 
+const updateAppointmentStatus = async (req, res) => {
+  try {
+    const { appointmentId, status } = req.body;
+
+    await AppointmentModel.findByIdAndUpdate(appointmentId, { status });
+
+    res.json({
+      success: true,
+      message: "Appointment status updated succesfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
 export {
   bookAppointment,
   listUserAppointment,
   cancelAppointment,
   listAllAppointment,
+  updateAppointmentStatus,
 };
