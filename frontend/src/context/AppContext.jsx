@@ -15,18 +15,44 @@ const AppConextProvider = (props) => {
   const navigate = useNavigate();
 
   const getBarbers = async () => {
-    const response = await axios.get(backendUrl + "/api/barber/list");
+    try {
+      const response = await axios.get(backendUrl + "/api/barber/list");
 
-    if (response.data.success) {
-      setBarbers(response.data.barbers);
-    } else {
-      toast.error(response.data.message);
+      if (response.data.success) {
+        setBarbers(response.data.barbers);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const getUserData = async () => {
+    try {
+      const response = await axios.get(backendUrl + "/api/user/profile", {
+        headers: { token },
+      });
+
+      if (response.data.success) {
+        setUserData(response.data.user);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
   useEffect(() => {
     getBarbers();
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      getUserData();
+    }
+  }, [token]);
 
   const value = {
     token,
