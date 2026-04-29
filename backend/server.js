@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import userRouter from "./routes/userRoute.js";
 import connectCloudinary from "./config/cloudinary.js";
 import barberRouter from "./routes/barberRoute.js";
+import appointmentRouter from "./routes/appointmentRoutes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ connectCloudinary();
 // routes
 app.use("/api/user", userRouter);
 app.use("/api/barber", barberRouter);
+app.use("/api/appointment", appointmentRouter);
 
 const PORT = process.env.PORT || 4000;
 

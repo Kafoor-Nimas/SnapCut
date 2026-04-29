@@ -6,10 +6,10 @@ import {
 } from "../controller/appointmentController.js";
 import userAuth from "../middleware/authUser.js";
 
-const appointmentRoute = express.Router();
+const appointmentRouter = express.Router();
 
-appointmentRoute.post("/book", userAuth, bookAppointment);
-appointmentRoute.get("/list", userAuth, listUserAppointment);
-appointmentRoute.post("/cancel", userAuth, cancelAppointment);
+appointmentRouter.post("/book", userAuth, bookAppointment);
+appointmentRouter.get("/list", userAuth, listUserAppointment);
+appointmentRouter.post("/cancel", userAuth, cancelAppointment);
 
-export default appointmentRoute;
+export default appointmentRouter;
