@@ -102,4 +102,16 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { userRegister, userLogin, adminLogin };
+const getUserProfile = async (req, res) => {
+  try {
+    const { userId } = req.headers;
+
+    const user = await UserModel.findById(userId).select("-password");
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { userRegister, userLogin, adminLogin,getUserProfile };
