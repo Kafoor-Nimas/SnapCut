@@ -57,9 +57,10 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="flex gap-2 ">
-          <BarberCart name={name} fees={fees} />
-
+        <div className="grid grid-cols-4 lg:grid-cols-5 gap-4 ">
+          {barbers.slice(0, 5).map((barber) => (
+            <BarberCart key={barber._id} barber={barber} />
+          ))}
         </div>
       </div>
     </div>

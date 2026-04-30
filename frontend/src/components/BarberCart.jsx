@@ -8,7 +8,7 @@ const BarberCart = ({ barber }) => {
       onClick={() => navigate(`/appointment/${barber._id}`)}
       className="flex flex-col cursor-pointer hover:shadow-lg transition-all duration-300 rounded-lg overflow-hidden border border-[#c8a063]"
     >
-      <img src={barber.image} alt="" className="h-48 w-full object-cover" />
+      <img src={barber.image} alt="" className="h-64 w-full object-cover object-top" />
       <div className="flex flex-col gap-1 p-3 bg-[#1f1509]">
         <h1 className="font-bold text-white">{barber.name}</h1>
         <p className="text-sm text-gray-400">{barber.services.join(", ")}</p>
