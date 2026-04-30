@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 export const AppContext = createContext();
 
-const AppConextProvider = (props) => {
+const AppContextProvider = (props) => {
   const currency = "LKR";
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [token, setToken] = useState(localStorage.getItem("token") || "");
@@ -71,4 +71,4 @@ const AppConextProvider = (props) => {
   );
 };
 
-export default AppConextProvider;
+export default AppContextProvider;
