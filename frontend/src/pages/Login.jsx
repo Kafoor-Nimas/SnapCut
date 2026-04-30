@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Login = () => {
   const { setToken, navigate, backendUrl } = useContext(AppContext);
@@ -8,10 +9,39 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
 
   const onSubmitHandler = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
+      if (currentState === "login") {
+        const response = await axios.post(backendUrl + "/api/user/login", {
+          email,
+          password,
+        });
+        if (response.data.success) {
+          setToken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+          navigate("/");
+        } else {
+          toast.error(response.data.message);
+        }
+      } else {
+        const response = await axios.post(backendUrl + "/api/user/register", {
+          name,
+          email,
+          password,
+          phone,
+        });
+
+        if (response.data.success) {
+          setToken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+          navigate("/");
+        } else {
+          toast.error(response.data.message);
+        }
+      }
     } catch (error) {
       toast.error(error.message);
     }
@@ -90,58 +120,58 @@ const Login = () => {
                   <input
                     type="password"
                     name="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                     id="password"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#865926] focus:border-[#865926] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor="confirm-password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Confirm password
-                  </label>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
+                {currentState != "login" && (
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Phone
+                    </label>
                     <input
-                      id="terms"
-                      aria-describedby="terms"
-                      type="checkbox"
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#865926]dark:ring-offset-gray-800"
+                      onChange={(e) => setPhone(e.target.value)}
+                      value={phone}
+                      type="number"
+                      name="phone"
+                      id="phone"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#865926] focus:border-[#865926] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Your Phone No."
                       required=""
                     />
                   </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="terms"
-                      className="font-light text-gray-500 dark:text-gray-300"
-                    >
-                      I accept the{" "}
-                      <a
-                        className="font-medium text-[#865926] hover:underline dark:text-primary-500"
-                        href="#"
-                      >
-                        Terms and Conditions
-                      </a>
-                    </label>
-                  </div>
-                </div>
+                )}
+
                 <button
                   type="submit"
                   className="w-full text-white bg-[#865926] hover:bg-[#6b4520] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#865926] dark:hover:bg-[#6b4520] dark:focus:ring-primary-800"
                 >
-                  Create an account
+                  {currentState == "login" ? "Login" : "Create an account"}
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Already have an account?{" "}
+                  {currentState === "login"
+                    ? "Don't have an account?"
+                    : "Already have an account?"}
+
                   <a
                     href="#"
                     className="font-medium text-[#865926] hover:underline dark:text-primary-500"
+                    onClick={() =>
+                      setCurrentState((prev) =>
+                        prev === "login" ? "register" : "login",
+                      )
+                    }
                   >
-                    Login here
+                    {currentState === "login"
+                      ? " Register here"
+                      : " Login here"}
                   </a>
                 </p>
               </form>
