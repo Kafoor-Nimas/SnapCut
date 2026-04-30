@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { assets } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
+import BarberCart from "../components/BarberCart";
 
 const Home = () => {
-  const { navigate } = useContext(AppContext);
+  const { navigate, barbers } = useContext(AppContext);
   return (
     <div>
       {/* Hero Section */}
@@ -39,6 +40,26 @@ const Home = () => {
             alt=""
             className="h-64 rounded-lg object-cover mt-16"
           />
+        </div>
+      </div>
+
+      {/* Meet Our Barbers */}
+      <div className="flex flex-col gap-6 my-10 p-10">
+        <div className="flex justify-between">
+          <h1 className="text-3xl font-bold text-[#c8a063]">
+            Meet Our <span className="">Barbers</span>
+          </h1>
+          <button
+            onClick={() => navigate("/barbers")}
+            className="text-sm bg-white px-4 py-2 text-[#c8a063] border border-[#c8a063]"
+          >
+            View All
+          </button>
+        </div>
+
+        <div className="flex gap-2 ">
+          <BarberCart name={name} fees={fees} />
+
         </div>
       </div>
     </div>
