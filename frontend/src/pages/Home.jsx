@@ -1,8 +1,48 @@
+import { useContext } from "react";
+import { assets } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 
 const Home = () => {
+  const { navigate } = useContext(AppContext);
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      {/* Hero Section */}
+      <div className="bg-[#171008] flex items-center justify-between px-16 py-20">
+        {/* Left Side Text */}
+        <div className="max-w-lg">
+          {/* Heading */}
+          <h1 className="text-5xl font-bold text-white leading-tight">
+            Skilled Craftsmen <br />
+            <span className="text-[#c8a063]">Barbershop</span>
+          </h1>
+          <p className="text-gray-400 mt-4 text-sm leading-relaxed">
+            A barber is a person whose occupation is mainly to cut, dress,
+            groom, style and shave men's and boy's hair or beards.
+          </p>
+          <button
+            onClick={() => navigate("/barbers")}
+            className="mt-6 bg-[#865926] text-white px-6 py-3 rounded-lg hover:bg-[#6b4520]"
+          >
+            Book An Appointment
+          </button>
+        </div>
 
-export default Home
+        {/* Right side -image */}
+        <div className="flex gap-4">
+          <img
+            src={assets.img8}
+            alt=""
+            className="h-80 rounded-lg object-cover"
+          />
+          <img
+            src={assets.img9}
+            alt=""
+            className="h-64 rounded-lg object-cover mt-16"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
