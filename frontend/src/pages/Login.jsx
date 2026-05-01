@@ -139,7 +139,7 @@ const Login = () => {
                     <input
                       onChange={(e) => setPhone(e.target.value)}
                       value={phone}
-                      type="number"
+                      type="text"
                       name="phone"
                       id="phone"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#865926] focus:border-[#865926] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

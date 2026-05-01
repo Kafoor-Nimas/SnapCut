@@ -14,6 +14,7 @@ import img7 from "./img7.jpg";
 import img8 from "./img8.jpg";
 import img9 from "./img9.jpg";
 import img10 from "./img10.png";
+import profileIcon from "./profile_icon.png";
 
 export const assets = {
   logo,
@@ -32,4 +33,5 @@ export const assets = {
   img8,
   img9,
   img10,
+  profileIcon,
 };

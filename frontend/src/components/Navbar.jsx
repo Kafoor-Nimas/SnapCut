@@ -52,11 +52,12 @@ const Navbar = () => {
       {/* Login/Profile */}
       {token && userData ? (
         <div className="relative group">
-          <img
-            src={assets.barber1}
-            alt=""
-            className="w-10 h-10 rounded-full cursor-pointer"
-          />
+         {/* 👇 Shows first letter of user's name */}
+    <div className="w-10 h-10 rounded-full bg-[#865926] flex items-center justify-center cursor-pointer">
+      <span className="text-white font-bold text-lg">
+        {userData.name ? userData.name[0].toUpperCase() : "U"}
+      </span>
+    </div>
           <div className="hidden group-hover:block absolute right-0 bg-white shadow-lg rounded-lg p-3 z-10">
             <p
               onClick={() => navigate("/my-appointments")}
