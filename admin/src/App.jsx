@@ -6,8 +6,8 @@ import Sidebar from "./components/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import AddBarber from "./pages/AddBarber";
 import BarbersList from "./pages/BarbersList";
-import Dashboard from "./pages/BarbersList";
 import Appointments from "./pages/Appointments";
+import Dashboard from "./pages/dashboard";
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("adminToken") || "");
