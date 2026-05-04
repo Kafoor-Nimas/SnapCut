@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { backendUrl } from "../App";
 
 export default function Login({ setToken }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // const [name,setName]=useState("");
   const [email, setEmail] = useState("");

@@ -9,10 +9,11 @@ import BarbersList from "./pages/BarbersList";
 import Appointments from "./pages/Appointments";
 import Dashboard from "./pages/dashboard";
 
+export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("adminToken") || "");
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   return (
     <div>
       <ToastContainer />
@@ -26,12 +27,12 @@ const App = () => {
             <div className="flex-1 p-8">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/add-barber" element={<AddBarber />} />
-                <Route path="/barbers" element={<BarbersList />} />
-                <Route path="/appointments" element={<Appointments />} />
+                <Route path="/add-barber" element={<AddBarber token={token}/>} />
+                <Route path="/barbers" element={<BarbersList token={token}/>} />
+                <Route path="/appointments" element={<Appointments token={token}/>} />
               </Routes>
             </div>
-          </div>
+          </div>``
         </>
       )}
     </div>
