@@ -10,7 +10,9 @@ import Dashboard from "./pages/BarbersList";
 import Appointments from "./pages/Appointments";
 
 const App = () => {
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [token, setToken] = useState(localStorage.getItem("adminToken") || "");
+
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   return (
     <div>
       <ToastContainer />

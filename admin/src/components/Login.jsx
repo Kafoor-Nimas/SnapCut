@@ -1,4 +1,34 @@
-export default function Login() {
+import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+export default function Login({ setToken }) {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+  // const [name,setName]=useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSubmithandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(backendUrl + "/api/user/admin-login", {
+        email,
+        password,
+      });
+
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("adminToken", response.data.token);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
   return (
     <>
       <style>{`
@@ -13,7 +43,7 @@ export default function Login() {
         <div className="flex flex-col justify-center w-full max-w-80 rounded-xl px-6 py-8 border border-slate-700 bg-slate-900 text-white text-sm">
           <h2 className="text-2xl font-semibold">Sign In</h2>
           <p className="text-slate-300 mt-1">Login to your account</p>
-          <form className="mt-8" onsubmit="return false">
+          <form className="mt-8" onSubmit={onSubmithandler}>
             <label
               htmlFor="email"
               className="block mb-1 font-medium text-slate-300"
@@ -24,6 +54,8 @@ export default function Login() {
               type="email"
               id="email"
               name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               placeholder="Email"
               className="w-full p-2 mb-3 bg-slate-900 border border-slate-700 rounded-md focus:outline-none focus:ring-1 transition focus:ring-indigo-500 focus:border-indigo-500"
             />
@@ -38,6 +70,8 @@ export default function Login() {
               type="password"
               id="password"
               name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               placeholder="Password"
               className="w-full p-2 mb-2 bg-slate-900 border border-slate-700 rounded-md focus:outline-none focus:ring-1 transition focus:ring-indigo-500 focus:border-indigo-500"
             />
