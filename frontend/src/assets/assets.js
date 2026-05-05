@@ -15,9 +15,11 @@ import img8 from "./img8.jpg";
 import img9 from "./img9.jpg";
 import img10 from "./img10.png";
 import profileIcon from "./profile_icon.png";
+import banner2 from "./banner2.jpg";
 
 export const assets = {
   logo,
+  banner2,
   barber1,
   barber2,
   barber3,

@@ -31,15 +31,16 @@ const Home = () => {
         {/* Right side -image */}
         <div className="flex gap-4">
           <img
-            src={assets.img8}
+            // src={assets.img8}
+            src={assets.banner2}
             alt=""
             className="h-80 rounded-lg object-cover"
           />
-          <img
+          {/* <img
             src={assets.img9}
             alt=""
             className="h-64 rounded-lg object-cover mt-16"
-          />
+          /> */}
         </div>
       </div>
 

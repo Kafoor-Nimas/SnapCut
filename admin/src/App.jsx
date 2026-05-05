@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import AddBarber from "./pages/AddBarber";
 import BarbersList from "./pages/BarbersList";
 import Appointments from "./pages/Appointments";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,13 +26,23 @@ const App = () => {
             <Sidebar />
             <div className="flex-1 p-8">
               <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/add-barber" element={<AddBarber token={token}/>} />
-                <Route path="/barbers" element={<BarbersList token={token}/>} />
-                <Route path="/appointments" element={<Appointments token={token}/>} />
+                <Route path="/" element={<Dashboard token={token} />} />
+                <Route
+                  path="/add-barber"
+                  element={<AddBarber token={token} />}
+                />
+                <Route
+                  path="/barbers"
+                  element={<BarbersList token={token} />}
+                />
+                <Route
+                  path="/appointments"
+                  element={<Appointments token={token} />}
+                />
               </Routes>
             </div>
-          </div>``
+          </div>
+          ``
         </>
       )}
     </div>
