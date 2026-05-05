@@ -46,9 +46,25 @@ const BarbersList = ({ token }) => {
     }
   };
 
-  const toggleAvailability = async (id)=>{
+  const toggleAvailability = async (id) => {
+    try {
+      const response = await axios.post(
+        backendUrl + "/api/barber/availability",
+        { id },
+        { headers: { token } },
+      );
 
-  }
+      if (response.data.success) {
+        toast.success(response.data.message);
+        getBarbers();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div className="flex-1 py-10 flex flex-col justify-between">
@@ -66,6 +82,7 @@ const BarbersList = ({ token }) => {
                 <th className="px-4 py-3 font-semibold truncate">
                   Availability
                 </th>
+                <th className="px-4 py-3 font-semibold">Action</th>
               </tr>
             </thead>
             <tbody className="text-sm text-gray-500">
@@ -79,7 +96,7 @@ const BarbersList = ({ token }) => {
                       {barber.name}
                     </span>
                   </td>
-                  <td className="px-4 py-3">{barber.experience}</td>
+                  <td className="px-8 py-3 ">{barber.experience}</td>
                   <td className="px-4 py-3 max-sm:hidden">${barber.fees}</td>
                   <td className="px-4 py-3">
                     <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">
@@ -87,10 +104,19 @@ const BarbersList = ({ token }) => {
                         type="checkbox"
                         className="sr-only peer"
                         defaultChecked={barber.availability}
+                        onChange={() => toggleAvailability(barber._id)}
                       />
                       <div className="w-12 h-7 bg-slate-300 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-200"></div>
                       <span className="dot absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 ease-in-out peer-checked:translate-x-5"></span>
                     </label>
+                  </td>
+                  <td className="px-4 py-3">
+                    <button
+                      onClick={() => removeBarber(barber._id)}
+                      className="text-red-500 hover:text-red-700 text-sm font-medium"
+                    >
+                      Remove
+                    </button>
                   </td>
                 </tr>
               ))}
