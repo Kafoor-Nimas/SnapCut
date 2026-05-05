@@ -56,4 +56,19 @@ const removeBarber = async (req, res) => {
   }
 };
 
-export { addBarber, listBarbers, removeBarber };
+const toggleAvailability = async (req,res)=>{
+  try {
+    const {id}=req.body;
+
+    const barber = await BarberModel.findById(id)
+
+    await BarberModel.findByIdAndUpdate(id,{availability:!barber.availability});
+
+    res.json({success:true,message:"Availabilty Updated"})
+  } catch (error) {
+    console.log(error);
+    res.json({success:false,message:error.message})
+  }
+}
+
+export { addBarber, listBarbers, removeBarber, toggleAvailability };
