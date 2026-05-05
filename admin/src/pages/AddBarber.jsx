@@ -11,8 +11,8 @@ const AddBarber = ({ token }) => {
   const [fees, setFees] = useState("");
   const [phone, setPhone] = useState("");
   const [services, setServices] = useState([]);
-  const [experience, setExperience] = useState([]);
-  const [about, setAbout] = useState([]);
+  const [experience, setExperience] = useState("");
+  const [about, setAbout] = useState("");
 
   const onSumbitHandler = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const AddBarber = ({ token }) => {
       formData.append("name", name);
       formData.append("fees", fees);
       formData.append("phone", phone);
-      formData.append("services", services);
+      formData.append("services", JSON.stringify(services.split(",")));
       formData.append("experience", experience);
       formData.append("about", about);
 
@@ -38,8 +38,8 @@ const AddBarber = ({ token }) => {
         setPhone("");
         setServices([]);
         setExperience("");
-        setExperience("");
         setAbout("");
+        setImage(false);
       } else {
         toast.error(response.data.message);
       }
@@ -78,7 +78,7 @@ const AddBarber = ({ token }) => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full max-w-[500px] px-3 py-2"
+          className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
           placeholder="Type here"
           required
         />
@@ -89,7 +89,7 @@ const AddBarber = ({ token }) => {
           type="text"
           value={services}
           onChange={(e) => setServices(e.target.value)}
-          className="w-full max-w-[500px] px-3 py-2"
+          className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
           placeholder="Type here"
           required
         />
@@ -100,7 +100,7 @@ const AddBarber = ({ token }) => {
           type="text"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className="w-full max-w-[500px] px-3 py-2"
+          className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
           placeholder="Type here"
           required
         />
@@ -111,7 +111,7 @@ const AddBarber = ({ token }) => {
           type="text"
           value={about}
           onChange={(e) => setAbout(e.target.value)}
-          className="w-full max-w-[500px] px-3 py-2"
+          className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
           placeholder="Type here"
           required
         />
@@ -122,7 +122,7 @@ const AddBarber = ({ token }) => {
           type="number"
           value={fees}
           onChange={(e) => setFees(e.target.value)}
-          className="w-full max-w-[500px] px-3 py-2"
+          className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
           placeholder="Type here"
           required
         />
@@ -133,11 +133,17 @@ const AddBarber = ({ token }) => {
           type="number"
           value={experience}
           onChange={(e) => setExperience(e.target.value)}
-          className="w-full max-w-[500px] px-3 py-2"
+          className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
           placeholder="Type here"
           required
         />
       </div>
+      <button
+        type="submit"
+        className="bg-[#865926] text-white px-6 py-2 rounded-lg mt-4"
+      >
+        Add Barber
+      </button>
     </form>
   );
 };
