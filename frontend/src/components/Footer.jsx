@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="flex flex-wrap justify-between gap-y-12 lg:gap-x-8">
             <div className="w-full md:w-[45%] lg:w-[35%] flex flex-col items-center md:items-start text-center md:text-left">
               <a href="https://prebuiltui.com">
-                <img src={assets.logo} className="w-32" />
+                <img src={assets.logo_light} className="w-32" />
               </a>
               <div className="w-full max-w-52 h-px mt-8 bg-linear-to-r from-black via-white/25 to-black"></div>
               <p className="text-sm text-white/60 mt-6 max-w-sm leading-relaxed">

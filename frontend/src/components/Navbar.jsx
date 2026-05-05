@@ -15,7 +15,7 @@ const Navbar = () => {
     <div className="flex justify-between items-center px-8 py-4 bg-[#171008]">
       {/* Logo */}
       <img
-        src={assets.logo}
+        src={assets.logo_light}
         alt="logo"
         className="w-32 cursor-pointer"
         onClick={() => navigate("/")}
@@ -52,12 +52,12 @@ const Navbar = () => {
       {/* Login/Profile */}
       {token && userData ? (
         <div className="relative group">
-         {/* 👇 Shows first letter of user's name */}
-    <div className="w-10 h-10 rounded-full bg-[#865926] flex items-center justify-center cursor-pointer">
-      <span className="text-white font-bold text-lg">
-        {userData.name ? userData.name[0].toUpperCase() : "U"}
-      </span>
-    </div>
+          {/* 👇 Shows first letter of user's name */}
+          <div className="w-10 h-10 rounded-full bg-[#865926] flex items-center justify-center cursor-pointer">
+            <span className="text-white font-bold text-lg">
+              {userData.name ? userData.name[0].toUpperCase() : "U"}
+            </span>
+          </div>
           <div className="hidden group-hover:block absolute right-0 bg-white shadow-lg rounded-lg p-3 z-10">
             <p
               onClick={() => navigate("/my-appointments")}

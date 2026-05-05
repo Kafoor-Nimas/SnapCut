@@ -3,6 +3,8 @@ import add_icon from "./add_icon.png";
 import appointment_icon from "./order_icon.png";
 import upload_area from "./upload_area.png";
 import parcel_icon from "./parcel_icon.svg";
+import logo2 from "./logo.png";
+import logo_light from "./logo_light.png";
 
 export const assets = {
   logo,
@@ -10,4 +12,6 @@ export const assets = {
   appointment_icon,
   upload_area,
   parcel_icon,
+  logo2,
+  logo_light,
 };
