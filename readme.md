@@ -16,7 +16,7 @@ A full-stack barbershop appointment booking platform built for Sri Lanka. Custom
 
 ### Appointment Booking
 
-![Appointment](frontend/public/appointment.png)
+![Appointment](frontend/public/appointmentPage.png)
 
 ### Admin Dashboard
 
