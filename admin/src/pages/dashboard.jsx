@@ -50,7 +50,7 @@ const Dashboard = ({ token }) => {
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
 
       {/* Stats cards */}
-      <div className="grid grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         <div className="bg-white border rounded-lg p-6 text-center">
           <p className="text-3xl font-bold text-[#865926]">{barbers.length}</p>
           <p className="text-gray-500 mt-1">Total Barbers</p>
