@@ -55,7 +55,7 @@ const Appointment = () => {
 
   if (!barber) return <div>Loading...</div>;
   return (
-    <div className="flex flex-col sm:flex-row gap-8 p-10">
+    <div className="flex flex-col sm:flex-row gap-8 p-4 md:p-10">
       {/* Left side barber info */}
       <div className="flex flex-col gap-3">
         <img

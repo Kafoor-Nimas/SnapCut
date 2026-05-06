@@ -50,7 +50,7 @@ const MyAppointments = () => {
     }
   }, []);
   return (
-    <div className="p-10">
+    <div className="p-4 md:p-10">
       <h1 className="text-2xl font-bold mb-6">My Appointments</h1>
       {appointments.length === 0 ? (
         <p className="text-gray-500">No appointments found</p>
