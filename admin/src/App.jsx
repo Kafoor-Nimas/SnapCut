@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import { ToastContainer } from "react-toastify";
-import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import AddBarber from "./pages/AddBarber";
 import BarbersList from "./pages/BarbersList";
 import Appointments from "./pages/Appointments";
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -42,7 +42,6 @@ const App = () => {
               </Routes>
             </div>
           </div>
-          ``
         </>
       )}
     </div>
