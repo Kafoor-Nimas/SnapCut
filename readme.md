@@ -4,6 +4,28 @@ A full-stack barbershop appointment booking platform built for Sri Lanka. Custom
 
 ---
 
+## Screenshots
+
+### Home Page
+
+![Home Page](frontend/public/home.png)
+
+### Barbers Page
+
+![Barbers Page](frontend/public/barbers.png)
+
+### Appointment Booking
+
+![Appointment](frontend/public/appointment.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](frontend/public/dashboard.png)
+
+### Admin Barbers List
+
+![Barbers List](frontend/public/listBarbers.png)
+
 ## Live Demo
 
 - **Frontend:** [snapcut-frontend.vercel.app](https://snap-cut-frontend.vercel.app)
