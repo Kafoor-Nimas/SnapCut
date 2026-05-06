@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import AddBarber from "./pages/AddBarber";
 import BarbersList from "./pages/BarbersList";
 import Appointments from "./pages/Appointments";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard2";
 import Login from "./pages/Login";
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
